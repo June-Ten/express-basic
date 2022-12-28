@@ -5,13 +5,14 @@ const login = express.Router()
 
 login.post('',(req,res)=> {
   let {username,password} = req.body
-  let sql = `select password from user where username="${username}"`
+  let sql = `select password from user where username="${username}" and status="default"
+            or  username="${username}" and status="agree"`
   db.query(sql,(err,results)=> {
     if (!err) {
       if (results.length === 0) {
         res.send({
           success: false,
-          msg: '用户名不存在'
+          msg: '用户名不存在或正在审核中'
         })
         return
       }

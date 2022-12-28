@@ -12,6 +12,9 @@ import waterNumber from "./router/waterNumber.js";
 import weatherTypeStat from "./router/weatherTypeStat.js";
 import windStat from "./router/windStat.js";
 import predictTemp from "./tensorflow/predictTemp.js";
+import manageUser from "./router/manageUser/manageUser.js"
+import updateUserStatus from "./router/manageUser/updateUserStatus.js"
+import deleteUser from "./router/manageUser/deleteUser.js"
 
 import windDirection from "./router/windDirection.js";
 import predictMaxTemp from "./tensorflow/predictMaxTemp.js";
@@ -31,6 +34,9 @@ app.use('/waterNumber',waterNumber)
 app.use('/weatherTypeStat',weatherTypeStat)
 app.use('/windStat',windStat)
 app.use('/predictTemp',predictTemp)
+app.use('/manageUser',manageUser);
+app.use('/updateUserStatus',updateUserStatus)
+app.use('/deleteUser',deleteUser)
 
 app.use('/windDirection',windDirection)
 app.use('/tensorflowMaxTemp',predictMaxTemp)
