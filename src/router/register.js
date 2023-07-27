@@ -18,8 +18,11 @@ register.post('', (req, res) => {
                     return;
                 }
             }
-            let innerSql = 'insert into user set  username=? , password=?,status=?'
+            let innerSql = 'insert into user set  username=? , password=?,status=?,date=?'
             let params = [username, password, 'checkPending']
+            let d = new Date()
+            let tempStr = d.getFullYear() + '-' +(d.getMonth()+1)+'-'+d.getDate()
+            params.push(tempStr)
             db.query(innerSql, params, (err, innerResults) => {
                 if (!err) {
                     console.log(innerResults, '插入成功')
